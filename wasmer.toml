@@ -1,38 +1,38 @@
-# ==========================
-# Wasmer.toml for Yielziey VXSite
-# PHP 8.3 compatible
-# ==========================
+# ===============================
+# WASMER TOML CONFIGURATION FILE
+# ===============================
 
-# General package info
+# 1️⃣ Package Info
 [package]
-name = "yielziey/vxsite"
-version = "0.2.0"
+name = "yielziey/vxsite"       # Pangalan ng iyong Wasmer package
+version = "0.2.1"             # Version ng package, dapat match sa YAML kung ginagamit
 description = "My Vexillum website project"
 
-# Filesystem mapping
-# Maps all project files (.) to /app in the container
+# 2️⃣ File System Mapping
+# Lahat ng files sa local folder (.) ay mapupunta sa /app sa Wasmer container
 [fs]
 "/app" = "."
 
-# Command to run the application
+# 3️⃣ Command to Start App
 [[command]]
 name = "start"
-# Use PHP 8.3
-module = "wasmer/php@8.3"
+# PHP 8.3 module
+module = "wasmer/php@8.3"        
 runner = "https://webc.org/runner/wasi"
-# Start PHP built-in server with custom router.php
+# Utos para patakbuhin ang built-in PHP server at gumamit ng router.php
 args = ["php", "-S", "0.0.0.0:8080", "-t", "/app", "/app/router.php"]
 
-# Environment variables / secrets
+# 4️⃣ Environment Variables (Secrets)
+# Siguraduhing lahat ng 'from = "secret"' ay may value sa Wasmer Secrets panel
 [env]
-# Database credentials
+# Database
 DB_HOST = { from = "secret" }
 DB_NAME = { from = "secret" }
 DB_USERNAME = { from = "secret" }
 DB_PASSWORD = { from = "secret" }
 DB_PORT = { from = "secret" }
 
-# Email (PHPMailer)
+# PHPMailer / Email
 SMTP_USER = { from = "secret" }
 SMTP_PASS = { from = "secret" }
 
