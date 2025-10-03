@@ -2,7 +2,7 @@
 
 # Pangkalahatang impormasyon tungkol sa iyong package
 [package]
-name = "yielziey/vxsite-main"
+name = "yielziey/vxsite"
 version = "0.2.0"
 description = "My Vexillum website project"
 
