@@ -15,8 +15,8 @@ description = "My Vexillum website project"
 # Ang command para patakbuhin ang iyong application
 [[command]]
 name = "start"
-# Gumagamit tayo ng official na PHP package mula sa Wasmer
-module = "wasmer/php" 
+# Gumagamit tayo ng official na PHP package mula sa Wasmer, naka-set sa 8.3
+module = "wasmer/php:8.3"
 runner = "https://webc.org/runner/wasi"
 # Ito ang utos para simulan ang PHP web server at gamitin ang iyong router.php
 # para sa custom 404 page.
