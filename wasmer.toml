@@ -1,46 +1,45 @@
-# Ito ang final at tamang wasmer.toml
+# ==========================
+# Wasmer.toml for Yielziey VXSite
+# PHP 8.3 compatible
+# ==========================
 
-# Pangkalahatang impormasyon tungkol sa iyong package
+# General package info
 [package]
 name = "yielziey/vxsite"
 version = "0.2.0"
 description = "My Vexillum website project"
 
-# Pagma-map ng iyong mga files
-# Sinasabi nito na ang lahat ng files sa iyong project (.) ay ilagay
-# sa /app/ directory sa loob ng server.
+# Filesystem mapping
+# Maps all project files (.) to /app in the container
 [fs]
 "/app" = "."
 
-# Ang command para patakbuhin ang iyong application
+# Command to run the application
 [[command]]
 name = "start"
-# Gumagamit tayo ng official na PHP package mula sa Wasmer, naka-set sa 8.3
-module = "wasmer/php:8.3"
+# Use PHP 8.3
+module = "wasmer/php@8.3"
 runner = "https://webc.org/runner/wasi"
-# Ito ang utos para simulan ang PHP web server at gamitin ang iyong router.php
-# para sa custom 404 page.
-args = [ "php", "-S", "0.0.0.0:8080", "-t", "/app", "/app/router.php" ]
+# Start PHP built-in server with custom router.php
+args = ["php", "-S", "0.0.0.0:8080", "-t", "/app", "/app/router.php"]
 
-# Listahan ng LAHAT ng "secrets" na kailangan ng iyong website.
-# Siguraduhin na ang bawat isa dito ay may katumbas na value sa
-# "Secrets" section ng iyong Wasmer project settings.
+# Environment variables / secrets
 [env]
-# Para sa Database
+# Database credentials
 DB_HOST = { from = "secret" }
 DB_NAME = { from = "secret" }
 DB_USERNAME = { from = "secret" }
 DB_PASSWORD = { from = "secret" }
 DB_PORT = { from = "secret" }
 
-# Para sa Email (PHPMailer)
+# Email (PHPMailer)
 SMTP_USER = { from = "secret" }
 SMTP_PASS = { from = "secret" }
 
-# Para sa Twitch API
+# Twitch API
 TWITCH_CLIENT_ID = { from = "secret" }
 TWITCH_CLIENT_SECRET = { from = "secret" }
 
-# Para sa Spotify API
+# Spotify API
 SPOTIFY_CLIENT_ID = { from = "secret" }
 SPOTIFY_CLIENT_SECRET = { from = "secret" }
