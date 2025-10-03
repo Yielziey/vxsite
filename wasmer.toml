@@ -1,24 +1,19 @@
-# Pangkalahatang impormasyon tungkol sa iyong package
+# Final na wasmer.toml para sa vxsite
+
 [package]
 name = "yielziey/vxsite"
 version = "0.2.2"
 description = "My Vexillum website project"
 
-# Pagma-map ng iyong mga files
-# Ilalagay lahat ng files sa /app/ directory sa loob ng server
 [fs]
 "/app" = "."
 
-# Command para patakbuhin ang application
 [[command]]
 name = "start"
-# Gumagamit ng specific PHP 8.3 runtime
-module = "wasmer/php@8.3"
+module = "wasmer/php"       # Official Wasmer PHP package
 runner = "https://webc.org/runner/wasi"
-# Utos para simulan ang PHP built-in web server at gamitin ang router.php
-args = ["php", "-S", "0.0.0.0:8080", "-t", "/app", "/app/router.php"]
+args = [ "php", "-S", "0.0.0.0:8080", "-t", "/app", "/app/router.php" ]
 
-# Secrets na kailangan ng website
 [env]
 # Database
 DB_HOST = { from = "secret" }
